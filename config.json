@@ -1,0 +1,22 @@
+{
+    "webhook_url": "# WEBHOOK_URL",
+    "username": "# CHANGE HERE OR IN THE INTEGRATIONS TAB, THIS OVERWRITES THE INTEGRATIONS TAB VALUES",
+    "avatar_url": "# CHANGE HERE OR IN THE INTEGRATIONS TAB, THIS OVERWRITES THE INTEGRATIONS TAB VALUES",
+    "embed": {
+        "Title": "Title",
+        "Description": "Description",
+        "Color": 3447003,
+        "Fields": [
+            {
+                "Name": "Field 1",
+                "Value": "Value 1",
+                "Inline": true
+            },
+            {
+                "Name": "Field 1",
+                "Value": "Value 1",
+                "Inline": true
+            }
+        ]
+    }
+}
