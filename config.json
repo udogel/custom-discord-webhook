@@ -8,7 +8,7 @@
         "Color": 3447003,
         "Fields": [
             {
-                "Name": "Field 1",
+                "Name": "Field1",
                 "Value": "Value 1",
                 "Inline": true
             },
