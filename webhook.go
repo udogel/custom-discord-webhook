@@ -29,12 +29,12 @@ type WebhookRequestBody struct {
 	AvatarURL string  `json:"avatar_url,omitempty"`
 }
 
-func PostWebhook(config Config, client *http.Client) error {
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+func PostWebhook(config Config, client *http.Client, timeoutTime int) error {
+	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(timeoutTime)*time.Second)
 	defer cancel()
 
 	if err := sendWebhook(config, client, ctx); err != nil {
-		return fmt.Errorf("error sending webhook: %w", err)
+		return err
 	}
 
 	return nil
