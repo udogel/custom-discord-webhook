@@ -20,7 +20,11 @@ type Config struct {
 func main() {
 	config, err := readConfig("config.json")
 	if err != nil {
-		fmt.Printf("error loading configuration file: %v\n", err)
+		log.Fatal("Error loading configuration file: ", err)
+	}
+
+	if err := validateConfig(config); err != nil {
+		log.Fatal("Invalid configuration: ", err)
 	}
 
 	timeoutTime := config.TimeoutTime
@@ -50,4 +54,16 @@ func readConfig(path string) (Config, error) {
 	}
 
 	return config, nil
+}
+
+func validateConfig(config Config) error {
+	if config.WebhookURL == "" || config.Embed.Title == "" || config.Embed.Description == "" {
+		return fmt.Errorf("all required config fields must be set")
+	}
+	for _, v := range config.Embed.Fields {
+		if v.Name == "" || v.Value == "" {
+			return fmt.Errorf("all required config fields must be set")
+		}
+	}
+	return nil
 }
