@@ -31,11 +31,12 @@ func main() {
 	if timeoutTime == 0 {
 		timeoutTime = 10
 	}
+
 	client := &http.Client{
 		Timeout: time.Duration(timeoutTime) * time.Second,
 	}
 
-	if err := PostWebhook(config, client); err != nil {
+	if err := PostWebhook(config, client, timeoutTime); err != nil {
 		log.Fatal("Error sending webhook: ", err)
 	} else {
 		log.Print("Webhook sent successfully")
